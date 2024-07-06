@@ -1,6 +1,13 @@
 # ggml-simple
 
-1. Simply put `add_subdirectory(ggml-simple)` to end of `examples/CMakeLists.txt` in llama.cpp project.
+1. Simply put `add_subdirectory(ggml-simple)` to end of `examples/CMakeLists.txt` in llama.cpp project.  
+```
+    ...
+    add_subdirectory(tokenize)
+    add_subdirectory(train-text-from-scratch)
+    add_subdirectory(ggml-simple) <-- HERE!
+endif()
+```
 2. Build llama.cpp project using `CMake`:  
 ```
 $ cmake -B bld
