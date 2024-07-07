@@ -148,17 +148,18 @@ int main() {
     ggml_backend_tensor_get(result, out_data.data(), 0, ggml_nbytes(result));
 
     // expected result:
-    // [ 60.00 110.00 54.00 29.00
-    //  55.00 90.00 126.00 28.00
-    //  50.00 54.00 42.00 64.00 ]
-    printf("mul mat (%d x %d) (transposed result):\n[", static_cast<int>(result->ne[0]), static_cast<int>(result->ne[1]));
-    for (int j = 0; j < result->ne[1] /* rows */; j++) {
+    // [ 60.00 90.00 42.00
+    //  55.00 54.00 29.00
+    //  50.00 54.00 28.00
+    //  110.00 126.00 64.00 ]
+    printf("mul mat (%d x %d):\n[", static_cast<int>(result->ne[0]), static_cast<int>(result->ne[1]));
+    for (int j = 0; j < result->ne[0] /* rows */; j++) {
         if (j > 0) {
             printf("\n");
         }
 
-        for (int i = 0; i < result->ne[0] /* cols */; i++) {
-            printf(" %.2f", out_data[i * result->ne[1] + j]);
+        for (int k = 0; k < result->ne[1] /* cols */; k++) {
+            printf(" %.2f", out_data[k * result->ne[0] + j]);
         }
     }
     printf(" ]\n");
