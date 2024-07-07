@@ -72,6 +72,8 @@ mul mat (4 x 3):
 ggml_metal_free: deallocating
 ```
 
+<img src="https://www.omrimallis.com/assets/llama_cpp_gpu_offload.png.webp" width="600">
+
 ## References
 - <https://github.com/ggerganov/ggml/tree/master/examples/simple>
 - <https://www.omrimallis.com/posts/understanding-how-llm-inference-works-with-llama-cpp/>
