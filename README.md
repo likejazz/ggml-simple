@@ -1,5 +1,35 @@
 # ggml-simple
 
+This example simply performs a matrix multiplication, as shown below:
+
+$$
+ggml\\_mul\\_mat(A, B^T) = C
+$$
+
+$$
+ggml\\_mul\\_mat(
+\begin{bmatrix}
+2 & 8 \\
+5 & 1 \\
+4 & 2 \\
+8 & 6 \\
+\end{bmatrix}
+,
+\begin{bmatrix}
+10 & 5 \\
+9 & 9 \\
+5 & 4 \\
+\end{bmatrix}
+)
+\=
+\begin{bmatrix}
+60 & 90 & 42 \\
+55 & 54 & 29 \\
+50 & 54 & 28 \\
+110 & 126 & 64 \\
+\end{bmatrix}
+$$
+
 1. Simply put `add_subdirectory(ggml-simple)` to end of `examples/CMakeLists.txt` in llama.cpp project.  
 ```
     ...
@@ -34,9 +64,14 @@ ggml_metal_init: simdgroup matrix mul. support = true
 ggml_metal_init: hasUnifiedMemory              = true
 ggml_metal_init: recommendedMaxWorkingSetSize  = 17179.89 MB
 main: compute buffer size: 0.0625 KB
-mul mat (4 x 3) (transposed result):
-[ 60.00 110.00 54.00 29.00
- 55.00 90.00 126.00 28.00
- 50.00 54.00 42.00 64.00 ]
+mul mat (4 x 3):
+[ 60.00 90.00 42.00
+ 55.00 54.00 29.00
+ 50.00 54.00 28.00
+ 110.00 126.00 64.00 ]
 ggml_metal_free: deallocating
 ```
+
+## References
+- <https://github.com/ggerganov/ggml/tree/master/examples/simple>
+- <https://www.omrimallis.com/posts/understanding-how-llm-inference-works-with-llama-cpp/>
